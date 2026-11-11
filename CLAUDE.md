@@ -22,4 +22,6 @@ All logic is in `game.js` (loaded by `index.html` via a plain `<script>`, strict
 - **Asteroid sizes** are 1–3 and index the parallel arrays `RADII`, `SPEEDS`, `POINTS` (index 0 unused). Size 3 = large (20 pts), size 1 = small (100 pts). `split()` produces two asteroids of `size - 1`. Adding a size or tuning values means editing all three arrays.
 - **Levels**: clearing all asteroids calls `nextLevel()`, which spawns `3 + level` large asteroids outside a 130px safe radius around the center and resets the ship (3s invincibility with blinking).
 
-Note: the README mentions power-ups and a "shooting star" asteroid type, but neither exists in the code yet.
+- **Power-up (disparo triple)**: `PowerUp` item drops once per level (`powerUpSpawned`) after a random number (3–10) of asteroid kills (`powerUpKillsLeft`, re-armed by `armPowerUp()` in `initGame()` and `nextLevel()`). Picking it up sets `tripleTimer = TRIPLE_DURATION` (10s); while >0, `Ship.tryShoot()` fires 3 bullets in a fan. The timer resets on ship death.
+
+Note: the README mentions a "shooting star" asteroid type, but it doesn't exist in the code yet.
